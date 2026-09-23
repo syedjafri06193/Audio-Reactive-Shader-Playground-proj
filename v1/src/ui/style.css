@@ -1,0 +1,236 @@
+/*
+ * Dark by default and not themeable.
+ *
+ * This is a tool for looking at a bright image in a dark room. A light UI
+ * next to a full-screen shader ruins the dark adaptation that makes the
+ * shader readable, and every performer would switch it off immediately.
+ */
+
+:root {
+  --bg: #0b0c0e;
+  --panel: #141619;
+  --line: #24272c;
+  --text: #d8dbe0;
+  --dim: #8b919b;
+  --ok: #4ec9a0;
+  --warn: #ffbd2e;
+  --err: #ff5f56;
+  --accent: #5aa9ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 13px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+main {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 300px;
+  grid-template-rows: 1fr 40%;
+  grid-template-areas:
+    "stage side"
+    "editor side";
+  gap: 1px;
+  background: var(--line);
+}
+
+#stage-wrap {
+  grid-area: stage;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+}
+
+/* The canvas fills its box; the render resolution is set independently by
+   the scaler, which is the whole point of rendering offscreen. */
+#stage {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#overlay {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  display: flex;
+  gap: 14px;
+  color: var(--dim);
+  font: 11px/1 ui-monospace, Menlo, monospace;
+  /* Never intercept a pointer event: the mouse belongs to iMouse. */
+  pointer-events: none;
+  text-shadow: 0 1px 2px #000;
+}
+
+#side {
+  grid-area: side;
+  background: var(--panel);
+  overflow-y: auto;
+  padding: 12px;
+}
+
+.panel {
+  margin-bottom: 18px;
+}
+
+.panel h2 {
+  margin: 0 0 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.row {
+  display: flex;
+  gap: 6px;
+}
+
+.row.wrap {
+  flex-wrap: wrap;
+}
+
+button,
+.file {
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #1c1f24;
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+button:hover,
+.file:hover {
+  border-color: var(--accent);
+}
+
+button.learning {
+  border-color: var(--warn);
+  color: var(--warn);
+}
+
+/* Parameters --------------------------------------------------------- */
+
+.param {
+  display: grid;
+  grid-template-columns: 70px 1fr 42px auto;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.param label {
+  color: var(--dim);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.param input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.param .readout {
+  font: 11px/1 ui-monospace, Menlo, monospace;
+  color: var(--dim);
+  text-align: right;
+}
+
+.param button {
+  padding: 2px 6px;
+  font-size: 10px;
+}
+
+/*
+ * The ghost marker for pickup takeover.
+ *
+ * Without something showing where the physical knob is, pickup mode is
+ * indistinguishable from a broken control: the user turns it and nothing
+ * happens, with no indication of which way to turn to make it catch.
+ */
+.param.waiting input[type="range"] {
+  accent-color: var(--warn);
+}
+
+.param.waiting::after {
+  content: "";
+  grid-column: 2;
+  justify-self: start;
+  width: 2px;
+  height: 14px;
+  margin-top: -18px;
+  background: var(--warn);
+  transform: translateX(calc(var(--knob) * 100%));
+}
+
+/* Editor -------------------------------------------------------------- */
+
+#editor-wrap {
+  grid-area: editor;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--panel);
+}
+
+.editor-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--line);
+  font: 11px/1 ui-monospace, Menlo, monospace;
+}
+
+#editor {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Status -------------------------------------------------------------- */
+
+.ok {
+  color: var(--ok);
+}
+.error {
+  color: var(--err);
+}
+.note {
+  color: var(--warn);
+}
+.fine {
+  color: var(--dim);
+  font-size: 11px;
+}
+
+#audio-warnings:empty,
+#latency-notes:empty {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 40% 1fr auto;
+    grid-template-areas:
+      "stage"
+      "editor"
+      "side";
+  }
+}

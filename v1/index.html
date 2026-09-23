@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Audio-Reactive Shader Playground</title>
+    <link rel="stylesheet" href="/src/ui/style.css" />
+  </head>
+  <body>
+    <main>
+      <!-- The canvas is the product; everything else is chrome around it. -->
+      <section id="stage-wrap">
+        <canvas id="stage"></canvas>
+        <div id="overlay">
+          <span id="stats"></span>
+          <span id="latency"></span>
+        </div>
+      </section>
+
+      <section id="side">
+        <div class="panel">
+          <h2>Audio</h2>
+          <div class="row">
+            <button id="use-mic">Microphone</button>
+            <button id="use-tab">Tab audio</button>
+            <label class="file">
+              File<input id="use-file" type="file" accept="audio/*" hidden />
+            </label>
+          </div>
+          <p id="audio-warnings"></p>
+          <p id="latency-notes" class="fine"></p>
+        </div>
+
+        <div class="panel">
+          <h2>Presets</h2>
+          <div id="presets" class="row wrap"></div>
+        </div>
+
+        <div class="panel">
+          <h2>Parameters</h2>
+          <div id="params"></div>
+        </div>
+
+        <div class="panel">
+          <h2>MIDI</h2>
+          <p id="midi-status" class="note"></p>
+        </div>
+      </section>
+
+      <section id="editor-wrap">
+        <div class="editor-bar">
+          <span id="compile-status" class="ok">compiled</span>
+          <span class="fine">⌘/Ctrl + Enter to recompile now</span>
+        </div>
+        <div id="editor"></div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
