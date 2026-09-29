@@ -9,6 +9,8 @@ analysis layer: getting from `AnalyserNode` to numbers that actually
 correspond to what a person hears, which turns out to require undoing most
 of what the Web Audio API hands you.
 
+The full design is in [`../docs/design.md`](../docs/design.md).
+
 ```bash
 npm install
 npm run dev        # http://localhost:5173
