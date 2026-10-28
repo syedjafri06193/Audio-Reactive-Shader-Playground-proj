@@ -9,7 +9,7 @@ analysis layer: getting from `AnalyserNode` to numbers that actually
 correspond to what a person hears, which turns out to require undoing most
 of what the Web Audio API hands you.
 
-The full design is in [`../docs/design.md`](../docs/design.md).
+The full design is in [`../1—Documentation/design.md`](../1—Documentation/design.md).
 
 ```bash
 npm install
@@ -72,7 +72,7 @@ enough to pass a click track fires on every frame of dense noise.
 Measured here, the textbook version produced 21 false detections on a
 steady sine and missed an attack on a pad. Dividing by the frame's own
 energy fixes it: every steady signal collapses to ~0.05 while a transient
-still reaches ~1.0. See [`docs/notes-on-the-spec.md`](docs/notes-on-the-spec.md).
+still reaches ~1.0. See [`../1—Documentation/v1/notes-on-the-spec.md`](../1—Documentation/v1/notes-on-the-spec.md).
 
 ### 4. The latency budget is mostly physics
 
@@ -139,7 +139,7 @@ Several tests exist specifically to document a surprise:
 ## Notes on the design document
 
 Ten places where building this disagreed with the spec are recorded in
-[`docs/notes-on-the-spec.md`](docs/notes-on-the-spec.md), with measurements.
+[`../1—Documentation/v1/notes-on-the-spec.md`](../1—Documentation/v1/notes-on-the-spec.md), with measurements.
 The largest are the flux normalisation (§1), the MIDI-learn scoring metric
 (§6–7), and a crossfade that would have stayed at 0.7× resolution forever
 because sixty additions of `1/60` do not sum to `1` (§8).
