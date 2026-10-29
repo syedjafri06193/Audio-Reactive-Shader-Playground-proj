@@ -1,5 +1,7 @@
 # Audio-Reactive Shader Playground
 
+[![CI](https://github.com/syedjafri06193/Audio-Reactive-Shader-Playground-proj/actions/workflows/ci.yml/badge.svg)](https://github.com/syedjafri06193/Audio-Reactive-Shader-Playground-proj/actions/workflows/ci.yml)
+
 A browser live-coding environment for GLSL shaders driven by audio analysis:
 write a fragment shader, point it at a microphone or a file, and the music
 drives its uniforms. Includes preset morphing, MIDI controller bindings, and
@@ -43,14 +45,14 @@ CI runs typecheck, tests and build on every push
 .
 ├── README.md          ← you are here
 ├── .github/workflows/ ← CI: typecheck, test, build
-├── docs/
+├── 1—Documentation/   ← all documentation (index in its README)
 │   ├── design.md      ← full design guide
-│   └── design.pdf     ← same guide, PDF
+│   ├── design.pdf     ← same guide, PDF
+│   └── v1/            audio analysis, uniforms, platform support, spec errata
 └── v1/                ← first implementation
     ├── src/           audio, clock, editor, gl, midi, params, presets, shaders, ui
     ├── shaders/       prelude.glsl (shared uniforms and helpers)
-    ├── tests/         339 tests
-    └── docs/          audio analysis, uniforms, platform support, spec errata
+    └── tests/         339 tests
 ```
 
 Each `vN/` directory is a self-contained iteration. Start with
@@ -63,3 +65,7 @@ Each `vN/` directory is a self-contained iteration. Start with
 | [v1](v1/) | Audio analysis layer, hot-reload GLSL editor, MIDI learn, preset morphing, adaptive WebGL renderer | — |
 
 Add a row per version as new iterations land.
+
+## Documentation
+
+All documentation lives in [`1—Documentation/`](1—Documentation/README.md) — start with its index.
