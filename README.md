@@ -69,3 +69,39 @@ Add a row per version as new iterations land.
 ## Documentation
 
 All documentation lives in [`1—Documentation/`](1—Documentation/README.md) — start with its index.
+
+<!-- project-metrics:start -->
+## Project Metrics
+
+[![Stars](https://img.shields.io/github/stars/syedjafri06193/Audio-Reactive-Shader-Playground-proj?style=flat-square)](https://github.com/syedjafri06193/Audio-Reactive-Shader-Playground-proj/stargazers) [![Forks](https://img.shields.io/github/forks/syedjafri06193/Audio-Reactive-Shader-Playground-proj?style=flat-square)](https://github.com/syedjafri06193/Audio-Reactive-Shader-Playground-proj/forks) [![Open issues](https://img.shields.io/github/issues/syedjafri06193/Audio-Reactive-Shader-Playground-proj?style=flat-square)](https://github.com/syedjafri06193/Audio-Reactive-Shader-Playground-proj/issues) [![Last commit](https://img.shields.io/github/last-commit/syedjafri06193/Audio-Reactive-Shader-Playground-proj/improvements?style=flat-square)](https://github.com/syedjafri06193/Audio-Reactive-Shader-Playground-proj/commits/improvements) [![Commits](https://img.shields.io/github/commit-activity/t/syedjafri06193/Audio-Reactive-Shader-Playground-proj?style=flat-square)](https://github.com/syedjafri06193/Audio-Reactive-Shader-Playground-proj/commits/improvements) [![Top language](https://img.shields.io/github/languages/top/syedjafri06193/Audio-Reactive-Shader-Playground-proj?style=flat-square)](https://github.com/syedjafri06193/Audio-Reactive-Shader-Playground-proj) [![Repo size](https://img.shields.io/github/repo-size/syedjafri06193/Audio-Reactive-Shader-Playground-proj?style=flat-square)](https://github.com/syedjafri06193/Audio-Reactive-Shader-Playground-proj)
+
+### Code
+
+| Metric | Value |
+|---|---|
+| Lines of code | 5,313 |
+| Source files | 44 |
+| Tracked files | 60 |
+| Documentation | 8 Markdown files (15,050 words), 1 PDF |
+| Commits | 9 |
+| Contributors | 1 |
+| Active | 2026-09-11 → 2026-10-28 |
+
+| Language | Lines | Share |
+|---|---:|---:|
+| TypeScript | 5,111 | 96.2% |
+| CSS+Lasso | 148 | 2.8% |
+| HTML | 54 | 1.0% |
+
+### Performance
+
+| Metric | Result |
+|---|---|
+| Onset signal, click track (normalised peak) | **0.996** |
+| Onset signal, steady white noise (normalised peak) | 0.078 |
+| Window / frame rate | 512-point window at 60 fps |
+
+<sub>Measured figures recorded in [`1—Documentation/v1/notes-on-the-spec.md`](1%E2%80%94Documentation/v1/notes-on-the-spec.md).</sub>
+
+<sub>Code stats as of 2026-10-28, counted with pygount (comments and blank lines excluded). Badges update live.</sub>
+<!-- project-metrics:end -->
